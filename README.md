@@ -9,8 +9,8 @@ and presents the results both as output files and through a simple web applicati
 The goal is to demonstrate clean data preparation, explicit and auditable data quality rules, 
 and clear reporting suitable for operational monitoring — without using a database.
 
-**Note:**  
-This project uses **sample/demo data** inspired by realistic business scenarios. All data (including customer names, country codes, and agent names) is fictional and intended only for demonstration and portfolio purposes. No real company data or sensitive information is included.
+>**Note:**  
+>This project uses **sample/demo data** inspired by realistic business scenarios. All data (including customer names, country codes, and agent names) is fictional and intended only for demonstration and portfolio purposes. No real company data or sensitive information is included.
 
 ## Environment Setup
 
