@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DQ Issues</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>DQ Issues</h1>
+
+<div class="top-links">
+    <a href="/">Back Home</a>
+</div>
+
+<form method="get">
+    Ticket ID:
+    <input name="ticketid" value="{{ filters.ticketid or '' }}">
+
+    Check Name:
+    <input name="check_name" value="{{ filters.check_name or '' }}">
+
+    System:
+    <input name="system" value="{{ filters.system or '' }}">
+
+    Severity:
+    <input name="severity" value="{{ filters.severity or '' }}">
+
+    <button type="submit">Filter</button>
+</form>
+
+<div class="downloads">
+    <h2>Downloads</h2>
+    <a href="/download/dq_issues.csv">Download Issue Report CSV</a>
+</div>
+
+<br>
+
+<table border="1" cellpadding="6">
+    <tr>
+        <th>Ticket ID</th>
+        <th>Check Name</th>
+        <th>Severity</th>
+        <th>Message</th>
+        <th>System</th>
+    </tr>
+
+    {% for row in issues %}
+    <tr>
+        <td>{{ row.TICKETID }}</td>
+        <td>{{ row.CHECK_NAME }}</td>
+        <td>{{ row.SEVERITY }}</td>
+        <td>{{ row.MESSAGE }}</td>
+        <td>{{ row.SYSTEM }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

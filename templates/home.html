@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Quality Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Data Quality Dashboard</h1>
+
+<div class="top-links">
+    <a href="/issues">View Issues</a>
+</div>
+
+<div class="metrics">
+    <h2>Overall Metrics</h2>
+    <div class="metric">
+        <strong>Total Tickets:</strong> {{ metrics.get("TOTAL_TICKETS", 0) }}
+    </div>
+    <div class="metric">
+        <strong>Total Issues:</strong> {{ metrics.get("TOTAL_ISSUES", 0) }}
+    </div>
+    <div class="metric">
+        <strong>Tickets With Issues:</strong> {{ metrics.get("TICKETS_WITH_ISSUES", 0) }}
+    </div>
+</div>
+
+<div class="downloads">
+    <h2>Downloads</h2>
+    <a href="/download/dq_summary.csv">Download Summary CSV</a>
+    <a href="/download/dq_overall_metrics.csv">Download Metrics CSV</a>
+</div>
+
+<h2>Issue Summary</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Check Name</th>
+            <th>Severity</th>
+            <th>Issue Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in check_summary %}
+        <tr>
+            <td>{{ row["CHECK_NAME"] }}</td>
+            <td>{{ row["SEVERITY"] }}</td>
+            <td>{{ row["ISSUE_COUNT"] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
